@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* Light mode background */
+    --foreground: 224 71.4% 4.1%; /* Light mode text */
+    
+    --background-secondary: 0 0% 94%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    --primary: 142 70.6% 45.3%; /* Electric Green */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 38 92.1% 50.2%; /* #f59e0b */
+    --secondary-foreground: 224 71.4% 4.1%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 0 0% 90%;
+    --accent-foreground: 224 71.4% 4.1%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 142 71% 45%;
+
+    --radius: 0.8rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%; /* #0A0A0A */
+    --foreground: 0 0% 98%; /* #FAFAFA */
+
+    --background-secondary: 224 40% 9%;
+
+    --card: 224 40% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 70.6% 45.3%; /* Electric Green */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 38 92.1% 50.2%; /* #f59e0b */
+    --secondary-foreground: 224 71.4% 4.1%;
+
+    --muted: 224 40% 15%;
+    --muted-foreground: 0 0% 62.9%;
+
+    --accent: 224 40% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 25%;
+    --input: 240 4% 15%;
+    --ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .filter-white {
+    filter: brightness(0) invert(1);
+  }
+}
+
+@layer utilities {
+    @keyframes aurora {
+      from {
+        background-position: 50% 50%, 50% 50%;
+      }
+      to {
+        background-position: 350% 50%, 350% 50%;
+      }
+    }
+   .bg-aurora-hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .bg-aurora-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        ellipse 80% 50% at 50% 120%,
+        hsla(var(--primary), 0.15),
+        transparent
+      );
+      animation: aurora 20s linear infinite;
+    }
+    .bg-aurora-static {
+        background-image: radial-gradient(
+          ellipse at top left,
+          hsla(var(--primary), 0.1),
+          transparent 50%
+        ),
+        radial-gradient(
+          ellipse at bottom right,
+          hsla(280, 100%, 50%, 0.1),
+          transparent 50%
+        );
+    }
+     .bg-aurora-cta {
+      background-image: radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        hsla(142, 70%, 45%, 0.15),
+        transparent
+      ), radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        hsla(280, 100%, 50%, 0.1),
+        transparent
+      );
+       animation: aurora 20s linear infinite;
+    }
+}
